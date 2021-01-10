@@ -1,10 +1,13 @@
 package com.parking.demo.model;
 
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Role {
@@ -36,6 +39,7 @@ public class Role {
         this.name = name;
     }
 
+   
     @Override
     public String toString() {
         return "Role{" +

@@ -16,4 +16,6 @@ public interface UserService extends UserDetailsService {
     Optional<User> findById(Long id);
     User UpdateUser(User user);
     User save(UserRegistrationDto registration);
+    User saveNew(User user);
+    void deleteById(Long id);
 }

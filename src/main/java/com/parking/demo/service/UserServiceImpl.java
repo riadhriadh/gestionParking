@@ -40,6 +40,16 @@ public class UserServiceImpl implements UserService {
         user.setRoles(Arrays.asList(new Role("ROLE_USER")));
         return userRepository.save(user);
     }
+    
+    public   User saveNew(User use) {
+    	 User user = new User();
+         user.setFirstName(use.getFirstName());
+         user.setLastName(use.getLastName());
+         user.setEmail(use.getEmail());
+         user.setPassword(passwordEncoder.encode(use.getPassword()));
+         user.setRoles(Arrays.asList(new Role("ROLE_USER")));
+         return userRepository.save(user);
+    }
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -48,8 +58,7 @@ public class UserServiceImpl implements UserService {
             throw new UsernameNotFoundException("Invalid username or password.");
         }
         return new org.springframework.security.core.userdetails.User(user.getEmail(),
-            user.getPassword(),
-            mapRolesToAuthorities(user.getRoles()));
+            user.getPassword(),mapRolesToAuthorities(user.getRoles()));
     }
     
     public	Collection<User> findAllUsers(){
@@ -62,7 +71,13 @@ public class UserServiceImpl implements UserService {
     	
     }
     public User UpdateUser(User user) {
+    	
+    	
     	return userRepository.save(user);
+    }
+    public void deleteById(Long id) {
+ 
+    	 userRepository.deleteById(id);
     }
     private Collection < ? extends GrantedAuthority > mapRolesToAuthorities(Collection < Role > roles) {
     	

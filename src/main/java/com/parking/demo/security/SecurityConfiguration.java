@@ -27,6 +27,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 "/css/**",
                 "/img/**",
                 "/webjars/**").permitAll()
+          
             .anyRequest().authenticated()
             .and()
             .formLogin()
@@ -50,6 +51,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
         auth.setUserDetailsService(userService);
+       
         auth.setPasswordEncoder(passwordEncoder());
         return auth;
     }

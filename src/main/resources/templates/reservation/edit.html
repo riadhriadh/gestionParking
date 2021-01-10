@@ -15,6 +15,7 @@
  <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
    <div class="navbar-header">
+ 
    </div>
    <div id="navbar" class="collapse navbar-collapse">
     <ul class="nav navbar-nav">
@@ -27,29 +28,17 @@
  <br>
  <br>
  <div class="container">
-  <h2>Edit </h2>
+  <h2>Edit Reservation </h2>
 
- 
-  <form action="#" 
-  th:action="@{/update/{id}(id=${user.id})}" 
-  th:object="${user}" 
-  method="post">
-    <label for="lastName">Last Name</label>
-    <input type="text" class="form-control" th:field="*{lastName}" id="lastName" placeholder="lastName">
-    <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
-     <label for="firstName">First Name</label>
-    <input type="text" class="form-control" th:field="*{firstName}" id="firstName" placeholder="firstName">
-    <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
-    <label for="email">Email</label>
-    <input type="text" class="form-control" th:field="*{email}" id="email" placeholder="Email">
-    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
-    <br>
-    <input type="submit"    class="form-control btn btn-primary" value="Update User">   
-</form>
-     <br> 
-      <p>
+  
+  <select class="form-control form-control-lg">
+  <option>Large select</option>
+</select>
+<br>
+        <button type="button" class="btn btn-success">save</button>
+ <p>
    Welcome <span sec:authentication="principal.username">User</span>
-  </p>  
+  </p>
  </div>
 
  <script type="text/javascript"
