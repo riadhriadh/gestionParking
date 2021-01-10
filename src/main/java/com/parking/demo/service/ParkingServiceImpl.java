@@ -28,10 +28,16 @@ public class ParkingServiceImpl  implements ParkingService {
                 new Reservation(res.getParking_id(), res.getUser_id()))
                 .collect(Collectors.toList());
                 
-	//	List<ReservationInerface> Res=parkingRepository.findAllReservation();
-		
-		//List<Reservation> l=Res;
+
 		return reserva;
+	}
+	public	Parking  save(Parking p) {
+		return parkingRepository.save(p);
+		
+	}
+	public	void deleteById(Long id) {
+		parkingRepository.deleteById(id);
+		
 	}
 
 }

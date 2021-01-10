@@ -6,7 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.parking.demo.model.Parking;
 import com.parking.demo.service.ParkingService;
 
 
@@ -34,5 +36,20 @@ public class ParkingController {
 	    	
 	        return "parking/add";
 	    }
+	 @PostMapping("/add")
+	    public String  PakingAddNEW( Parking parking) {
+	    	System.out.println(parking);
+	         parking.setDespo(parking.getPlace());
+	    	parkingService.save(parking);
+		 return "redirect:/parking";
+	    }
+	  @GetMapping("/delete")
+	    public String showUpdateForm(@RequestParam  long id) {
+		  parkingService.deleteById(id);
+	        
+	        return "redirect:/parking";
+	    }
+	 
+	 
 
 }

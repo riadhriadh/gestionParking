@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -46,6 +47,7 @@ public class ReservationController {
 	        return "reservation/index";
 	    }
 	 
+	 
 	 @GetMapping("/edit")
 	    public String  ReservationEdit(Model model) {
 		 Long l=(long) 2;
@@ -63,6 +65,12 @@ public class ReservationController {
 		 return "reservation/add";
 		 
 	 }
-	 
+	 @PostMapping("/add")
+	    public String  ReservationAddNew( ReservationParking ReservationParking) {
+		
+
+		  return "redirect:/parking";
+		 
+	 }
 	
 }
