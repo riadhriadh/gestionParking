@@ -26,7 +26,7 @@
    </div>
    <div id="navbar" class="collapse navbar-collapse">
     <ul class="nav navbar-nav">
-     <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+     <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Se déconnecter</a></li>
     </ul>
    </div>
   </div>
@@ -35,35 +35,33 @@
  <br>
  <br>
  <div class="container">
-  <h2>Parking Add</h2>
+  
   
   
   
   <div class="row">
    <div class="col-md-6 col-md-offset-3">
-    <h1>Parking Add</h1>
+    <h1>Ajouter un parking</h1>
     <form th:action="@{/parking/add}"   method="post">
      <div th:if="${param.error}">
-      <div class="alert alert-danger">Invalid Name</div>
+      <div class="alert alert-danger">Nom incorrect</div>
      </div>
-     <div th:if="${param.logout}">
-      <div class="alert alert-info">You have been logged out.</div>
-     </div>
+     
      <div class="form-group">
-      <label for="name">Nom parking</label>: <input type="text"
+      <label for="name">Nom de parking</label>: <input type="text"
        id="name" name="name" class="form-control"
-       autofocus="autofocus" placeholder="Username" />
+       autofocus="autofocus" placeholder="Nom de parking" />
      </div>
      <div class="form-group">
-      <label for="place">Place</label>: <input type="number"
+      <label for="place">Nombre de Place</label>: <input type="number"
        id="place" name="place" class="form-control"
-       placeholder="place" />
+       placeholder="Nombre de Place" />
      </div>
      <div class="form-group">
       <div class="row">
        <div class="col-sm-6 col-sm-offset-3">
         <input type="submit" name="login-submit" id="save-submit"
-         class="form-control btn btn-success" value="Save" />
+         class="form-control btn btn-success" value="Enregistrer" />
        </div>
       </div>
      </div>

@@ -1,7 +1,7 @@
 package com.parking.demo.model;
 
 import java.util.HashSet;
-import java.util.Set;
+
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -65,12 +65,8 @@ public class Parking {
 		public void setDespo(Integer despo) {
 			this.despo = despo;
 		}
-		@ManyToMany(fetch = FetchType.LAZY)
-	    @JoinTable(name = "reservation",
-	    		 joinColumns = @JoinColumn(name = "parking_id", referencedColumnName = "id") ,
-	            inverseJoinColumns =  @JoinColumn(name = "user_id") )
-	    private Set<User> tags = new HashSet<>();
 
+	    
 		@Override
 		public String toString() {
 			return "Parking [id=" + id + ", name=" + name + ", place=" + place + ", despo=" + despo + "]";

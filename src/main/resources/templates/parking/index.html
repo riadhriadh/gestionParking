@@ -20,7 +20,7 @@
    </div>
    <div id="navbar" class="collapse navbar-collapse">
     <ul class="nav navbar-nav">
-     <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+     <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Se déconnecter</a></li>
     </ul>
    </div>
   </div>
@@ -29,35 +29,35 @@
  <br>
  <br>
  <div class="container">
-  <h2>Parking List</h2>
-  <button sec:authorize="hasRole('ROLE_ADMIN')" type="button" th:onclick="window.location.href='/parking/add'" class="btn btn-success">Add</button>
+  <h2>Liste de Parking</h2>
+  <button sec:authorize="hasRole('ROLE_ADMIN')" type="button" th:onclick="window.location.href='/parking/add'" class="btn btn-success">Ajouter un parking</button>
   <table class="table">
     <thead>
         <tr>
             <th> Id </th>
-            <th> Name </th>
-            <th> Place </th>
-             <th> Despo </th>
+            <th> Nom </th>
+            <th>Nombre de Place </th>
+             <th> Place disponible </th>
               <th> Action </th>
         </tr>
     </thead>
     <tbody>
 	<tr th:if="${parkings.empty}">
-            <td colspan="2"> No Parkings Available </td>
+            <td colspan="2"> Aucun parking disponible </td>
         </tr>
         
         <tr th:each="parking : ${parkings}">
          <td><span th:text="${parking.id}"> id </span></td>
-            <td><span th:text="${parking.name}"> name </span></td>
+            <td><span th:text="${parking.name}"> nom </span></td>
             <td><span th:text="${parking.place}"> place </span></td>
-             <td><span th:text="${parking.despo}"> despo </span></td>
+             <td><span th:text="${parking.despo}"> disponible </span></td>
               <td>
               <div sec:authorize="hasRole('ROLE_USER')">
-              <a th:if="${parking.despo>0}" th:href="@{/reservation/add(id=${parking.id})}" > Reservation</a> 
+              <a th:if="${parking.despo>0}" th:href="@{/reservation/add(id=${parking.id})}" > Reserver</a> 
               </div>
               <div sec:authorize="hasRole('ROLE_ADMIN')">
-              <button type="button" class="btn btn-primary">Edit</button>
-                  <a  th:href="@{/parking/delete(id=${parking.id})}">Delete</a>
+              <button type="button" class="btn btn-primary">Modifier</button>
+                  <a  th:href="@{/parking/delete(id=${parking.id})}">Supprimer</a>
                   
                 </div>  
                   </td>

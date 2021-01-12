@@ -9,7 +9,7 @@
 <link rel="stylesheet" type="text/css"
  th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
 
-<title>Registration</title>
+<title>Liste de réservation</title>
 </head>
 <body>
  <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -20,7 +20,7 @@
    </div>
    <div id="navbar" class="collapse navbar-collapse">
     <ul class="nav navbar-nav">
-     <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+     <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Se déconnecter</a></li>
     </ul>
    </div>
   </div>
@@ -29,39 +29,38 @@
  <br>
  <br>
  <div class="container">
-  <h2>Parking List</h2>
-  <button  type="button" th:onclick="window.location.href='/parking'" class="btn btn-success">Add</button>
+  <h2>Liste de réservation</h2>
+  <button  type="button" th:onclick="window.location.href='/parking'" class="btn btn-success">Réserver</button>
   <table class="table">
     <thead>
         <tr>
             <th>  Id  </th>
-            <th> User Email </th>
-            <th> Parking Name </th>
+            <th>Email d'utilisateur</th>
+            <th>Nom Parking </th>
               <th> Action </th>
         </tr>
     </thead>
     <tbody>
 	<tr th:if="${parkings.empty}">
-            <td colspan="2"> No Parkings Available </td>
+            <td colspan="2"> Aucun reservation </td>
         </tr>
         
         <tr th:each="parking : ${parkings}">
-         <td><span th:text="${parking.id}"> name </span></td>
+         <td><span th:text="${parking.id}"> id </span></td>
           
-              <td><span th:text="${parking.user.email}"> name </span></td>
-               <td><span th:text="${parking.parking.name}"> name </span></td>
+              <td><span th:text="${parking.user.email}"> email </span></td>
+               <td><span th:text="${parking.parking.name}">Nom Parking</span></td>
               <td>
               <div sec:authorize="hasRole('ROLE_USER')">
              
   
 </div>
-    <div sec:authorize="hasRole('ROLE_ADMIN')">
+    
   
-
-              <button type="button" class="btn btn-primary">Edit</button>
-                  <button type="button" class="btn btn-danger">Delete</button>
+ <a   th:href="@{/reservation/delete(id=${parking.id})}"  >Supprimer</a>
+                
                   
-                </div>  
+              
                   </td>
               
         </tr>

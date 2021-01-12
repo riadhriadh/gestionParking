@@ -21,5 +21,12 @@ public class ReservationServiceImpl  implements ReservationService{
 	  public  Optional<ReservationParking> findReservationByid(Long id) {
 		  return  reservationRepository.findById(id);
 	  }
+	  public ReservationParking saveNew(ReservationParking parking) {
+		  return  reservationRepository.save(parking);
+		  
+	  }
+	  public void delete(Long id) {
+		  reservationRepository.deleteById(id);
+		}
 	
 }
